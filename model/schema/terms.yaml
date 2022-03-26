@@ -120,6 +120,21 @@ slots:
       expected_value: text
     string_serialization: '{text}'
     slot_uri: MIOP:0000006
+  equipment:
+    is_a: core field
+    title: equipment 
+    description: >
+      Equipment that is operational, maintained, and accessible. This does not not guarantee does not guarantee immediate access.
+    range: string
+    multivalued: true
+    examples:
+    - value: NanoSIMS | centrifuge
+    comments: 
+    aliases:
+    annotations:
+      expected_value: text
+    string_serialization: '{text}'
+    slot_uri: MIOP:0000006
 enums:
    placeholder_enum:
     permissible_values:
