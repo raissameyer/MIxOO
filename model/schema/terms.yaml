@@ -1,0 +1,127 @@
+id: http://w3id.org/miop/terms
+name: terms
+imports:
+- linkml:types
+- ranges
+prefixes:
+  linkml: https://w3id.org/linkml/
+  miop.vocab: https://w3id.org/miop/vocab/
+  MIOP: https://w3id.org/miop/terms/
+default_prefix: miop.vocab
+slots:
+  core field:
+    abstract: true
+    description: MIOP field determined to be essential across all protocols
+  society field:
+    abstract: true
+    description: placeholder to match our 
+      belongs
+  meth_cat:
+    is_a: core field
+    title: methodology category 
+    description: >
+      Methodology category which the uploaded protocol belongs to. This links to the associated 
+      methodology categories which precede and succeed it in the workflow, to facilitate the linking of protocols 
+      into entire workflows, while keeping granularity and flexibility. This will enable the mixing and matching of 
+      protocol modules from various uploaded workflows
+    range: meth_cat_enum
+    multivalued: false
+    examples:
+    - value: society
+    - value: ethics and law
+    - value: design and logistics
+    comments: 
+    aliases:
+    - method type
+    - methodological category
+    - protocol type
+    annotations:
+      expected_value: text
+    string_serialization: '{text}'
+    slot_uri: MIOP:0000001
+  project:
+    is_a: core field
+    title: project
+    description: >
+      Details about the project (e.g., Name, Affiliation, website). May also includes a field
+      for tagging any projects that protocols are compliant with (e.g., Earth Microbiome Project/TARA Oceans).
+      Once submitted the relevant PI may be notified and could choose to endorse or reject the protocol as compliant
+      with their project.
+    range: string
+    multivalued: false
+    examples:
+    - value: Moorea BioCode, https://www.moorea.berkeley.edu/programs/research/moorea-biocode
+    - value: 
+    comments: 
+    aliases:
+    - source project
+    - authoring project
+    - published by project
+    annotations:
+      expected_value: text
+    string_serialization: '{text}'
+    slot_uri: MIOP:0000002
+  project:
+    is_a: core field
+    title: project
+    description: >
+      Details about the project (e.g., Name, Affiliation, website). May also includes a field
+      for tagging any projects that protocols are compliant with (e.g., Earth Microbiome Project/TARA Oceans).
+      Once submitted the relevant PI may be notified and could choose to endorse or reject the protocol as compliant
+      with their project.
+    range: string
+    multivalued: true
+    examples:
+    - value: Moorea BioCode, https://www.moorea.berkeley.edu/programs/research/moorea-biocode
+    - value: Project X, Compliant with: Project Y, Project Z
+    comments: 
+    aliases:
+    - source project
+    - authoring project
+    - published by project
+    annotations:
+      expected_value: text
+    string_serialization: '{text}'
+    slot_uri: MIOP:0000002
+  purpose:
+    is_a: core field
+    title: purpose
+    description: > 
+     Terms to describe the purpose of the omics research. [e.g., time series design
+     (OBI:0500020) or taxonomic diversity assessment by targeted gene survey (OBI:0001960)].
+    range: string
+    multivalued: true
+    examples:
+    - value: time series design [OBI:0500020]
+    - value: taxonomic diversity assessment by targeted gene survey [OBI:0001960]
+    - value: aliquot concentration
+    - value: DNA extraction
+  resources:
+    is_a: core field
+    title: resources
+    description: >
+      Terms to identify the key resources needed to complete the protocol [e.g., Illumina
+      MiSeq (EFO:0004205), centrifuge (OBI:0400106)]
+    range: string
+    multivalued: true
+    examples:
+    - value: Illumina MiSeq [EFO:0004205]
+    - value: centrifuge [OBI:0400106]
+    - value: InnovaPrep FluidPrep CP Select
+    - value: ZymoBIOMICS™ Fecal Reference with TruMatrix™ Technology
+    - value: GenapSys Sequencer
+enums:
+   meth_cat_enum:
+    permissible_values:
+      society: {}
+      design and logistics: {}
+      ethics and law: {}
+      data management: {}
+      sampling collection procedure: {}
+      bioinformatics: {}
+      contextual metadata analytical procedures: {}
+      sample extraction and purification: {}
+      omics sequencing procedures: {}
+      sample archiving or biobanking: {}
+      quantitative amplification: {}
+      data analysis: {}
