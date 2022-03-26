@@ -12,10 +12,9 @@ slots:
   core field:
     abstract: true
     description: MIxOO field determined to be essential across all protocols
-  society field:
+  non core field:
     abstract: true
-    description: placeholder to match our 
-      belongs
+    description: placeholder 
   observatory_id:
     is_a: core field
     title: observatory identifier 
@@ -72,9 +71,9 @@ slots:
       expected_value: text
     string_serialization: '{text}'
     slot_uri: MIOP:0000003
-  legal domicile:
+  legal_domicile:
     is_a: core field
-    title: country
+    title: legal domicile
     description: > 
      ISO 3166-1 alpha-2 code of the country under whose juristiction the observatory is operating (where the observatory is located). 
     range: string
@@ -90,40 +89,24 @@ slots:
       expected_value: text
     string_serialization: '{text}'
     slot_uri: MIOP:0000004
-  country:
+  country_of_operation:
     is_a: core field
-    title: country
+    title: country of operation
     description: >
-      ISO 3166-1 alpha-2 code of the country in which the observatory is active (taking samples). If you are sampling in international waters or disputed territories, 
+      ISO 3166-1 alpha-2 code of the country/countries in which the observatory is active (taking samples). If you are sampling in international waters or disputed territories, 
       please see [PLACEHOLDER_FOR_TERM].
     range: string
     multivalued: true
     examples:
-    - value: Illumina MiSeq [EFO:0004205]
-    - value: centrifuge [OBI:0400106]
-    - value: InnovaPrep FluidPrep CP Select
-    - value: ZymoBIOMICS™ Fecal Reference with TruMatrix™ Technology
-    - value: GenapSys Sequencer
+    - value: PF | US | DE
+    - value: PF
     comments: 
     aliases:
-    - methodology repository 
-    - protocols collection
     annotations:
       expected_value: text
     string_serialization: '{text}'
     slot_uri: MIOP:0000005
 enums:
-   meth_cat_enum:
+   placeholder_enum:
     permissible_values:
-      society: {}
-      design and logistics: {}
-      ethics and law: {}
-      data management: {}
-      sampling collection procedure: {}
-      bioinformatics: {}
-      contextual metadata analytical procedures: {}
-      sample extraction and purification: {}
-      omics sequencing procedures: {}
-      sample archiving or biobanking: {}
-      quantitative amplification: {}
-      data analysis: {}
+      placeholder: {}
