@@ -1,107 +1,101 @@
-id: http://w3id.org/miop/terms
+id: http://w3id.org/mixoo/terms
 name: terms
 imports:
 - linkml:types
 - ranges
 prefixes:
   linkml: https://w3id.org/linkml/
-  miop.vocab: https://w3id.org/miop/vocab/
-  MIOP: https://w3id.org/miop/terms/
+  mixoo.vocab: https://w3id.org/mixoo/vocab/
+  MIXOO: https://w3id.org/mixoo/terms/
 default_prefix: miop.vocab
 slots:
   core field:
     abstract: true
-    description: MIOP field determined to be essential across all protocols
+    description: MIxOO field determined to be essential across all protocols
   society field:
     abstract: true
     description: placeholder to match our 
       belongs
-  meth_cat:
+  observatory_id:
     is_a: core field
-    title: methodology category 
+    title: observatory identifier 
     description: >
-      Methodology category which the uploaded protocol belongs to. This links to the associated 
-      methodology categories which precede and succeed it in the workflow, to facilitate the linking of protocols 
-      into entire workflows, while keeping granularity and flexibility. This will enable the mixing and matching of 
-      protocol modules from various uploaded workflows
-    range: meth_cat_enum
-    multivalued: false
-    examples:
-    - value: society
-    - value: ethics and law
-    - value: design and logistics
-    comments: 
-    aliases:
-    - method type
-    - methodological category
-    - protocol type
-    annotations:
-      expected_value: text
-    string_serialization: '{text}'
-    slot_uri: MIOP:0000001
-  project:
-    is_a: core field
-    title: project
-    description: >
-      Details about the project (e.g., Name, Affiliation, website). May also includes a field
-      for tagging any projects that protocols are compliant with (e.g., Earth Microbiome Project/TARA Oceans).
-      Once submitted the relevant PI may be notified and could choose to endorse or reject the protocol as compliant
-      with their project.
+      A globally unique and persistent and web-accessible identifier of the observatory (e.g. a DEIMS.ID, ROR ID). 
+      Please ensure this was registered by the official organisation.
     range: string
     multivalued: false
     examples:
-    - value: Moorea BioCode, https://www.moorea.berkeley.edu/programs/research/moorea-biocode
-    - value: 
+    - value: https://deims.org/site/8eda49e9-1f4e-4f3e-b58e-e0bb25dc32a6
+    - value: https://ror.org/039kwqk96
+    - value: https://ror.org/04sk0et52 
     comments: 
     aliases:
-    - source project
-    - authoring project
-    - published by project
+    - observatory id
+    annotations:
+      expected_value: text
+    string_serialization: '{text}'
+    slot_uri: MIXOO:0000001
+  observatory_name:
+    is_a: core field
+    title: observatory name
+    description: >
+      The official, fully expanded (no acroynms) name of the observatory (preferrably the legally registered name). 
+    range: string
+    multivalued: false
+    examples:
+    - value: Monterey Bay Aquarium Research Institute
+    - value: Richard B. Gump South Pacific Research Station 
+    comments: 
+    aliases:
+    - official observatory name
+    - legal name of the observatory
     annotations:
       expected_value: text
     string_serialization: '{text}'
     slot_uri: MIOP:0000002
-  project:
+  methodology_archive:
     is_a: core field
-    title: project
+    title: methodology archive
     description: >
-      Details about the project (e.g., Name, Affiliation, website). May also includes a field
-      for tagging any projects that protocols are compliant with (e.g., Earth Microbiome Project/TARA Oceans).
-      Once submitted the relevant PI may be notified and could choose to endorse or reject the protocol as compliant
-      with their project.
+      Webaddress of the archive in which the observatory keeps its official methodological documents 
+      (e.g. protocols.io, Community in the Ocean Best Practices System, GitHub repository)
     range: string
     multivalued: true
     examples:
-    - value: Moorea BioCode, https://www.moorea.berkeley.edu/programs/research/moorea-biocode
-    - value: Project X, Compliant with: Project Y, Project Z
+    - value: https://mbari-bog.github.io/MBON-Protocols/
+    - value: https://repository.oceanbestpractices.org/handle/11329/832
     comments: 
     aliases:
-    - source project
-    - authoring project
-    - published by project
+    - methodology repository 
+    - protocols collection
     annotations:
       expected_value: text
     string_serialization: '{text}'
-    slot_uri: MIOP:0000002
-  purpose:
+    slot_uri: MIOP:0000003
+  legal domicile:
     is_a: core field
-    title: purpose
+    title: country
     description: > 
-     Terms to describe the purpose of the omics research. [e.g., time series design
-     (OBI:0500020) or taxonomic diversity assessment by targeted gene survey (OBI:0001960)].
+     ISO 3166-1 alpha-2 code of the country under whose juristiction the observatory is operating (where the observatory is located). 
     range: string
     multivalued: true
     examples:
-    - value: time series design [OBI:0500020]
-    - value: taxonomic diversity assessment by targeted gene survey [OBI:0001960]
-    - value: aliquot concentration
-    - value: DNA extraction
-  resources:
+    - value: PF
+    - value: US
+    - value: DE
+    comments: 
+    aliases:
+    - country of legal domicile of the observatory 
+    annotations:
+      expected_value: text
+    string_serialization: '{text}'
+    slot_uri: MIOP:0000004
+  country:
     is_a: core field
-    title: resources
+    title: country
     description: >
-      Terms to identify the key resources needed to complete the protocol [e.g., Illumina
-      MiSeq (EFO:0004205), centrifuge (OBI:0400106)]
+      ISO 3166-1 alpha-2 code of the country in which the observatory is active (taking samples). If you are sampling in international waters or disputed territories, 
+      please see [PLACEHOLDER_FOR_TERM].
     range: string
     multivalued: true
     examples:
@@ -110,6 +104,14 @@ slots:
     - value: InnovaPrep FluidPrep CP Select
     - value: ZymoBIOMICS™ Fecal Reference with TruMatrix™ Technology
     - value: GenapSys Sequencer
+    comments: 
+    aliases:
+    - methodology repository 
+    - protocols collection
+    annotations:
+      expected_value: text
+    string_serialization: '{text}'
+    slot_uri: MIOP:0000005
 enums:
    meth_cat_enum:
     permissible_values:
