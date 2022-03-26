@@ -29,7 +29,6 @@ slots:
     - value: https://ror.org/04sk0et52 
     comments: 
     aliases:
-    - observatory id
     annotations:
       expected_value: text
     string_serialization: '{text}'
@@ -106,6 +105,21 @@ slots:
       expected_value: text
     string_serialization: '{text}'
     slot_uri: MIOP:0000005
+  website:
+    is_a: core field
+    title: website 
+    description: >
+      Official web address (e.g. website) of the observatory.
+    range: string
+    multivalued: true
+    examples:
+    - value: https://www.moorea.berkeley.edu
+    comments: 
+    aliases:
+    annotations:
+      expected_value: text
+    string_serialization: '{text}'
+    slot_uri: MIOP:0000006
 enums:
    placeholder_enum:
     permissible_values:
